@@ -4,7 +4,7 @@ import pygame
 if __name__ == '__main__':
     pygame.init()
     screen = pygame.display.set_mode((1000, 500))
-    pygame.display.set_caption('Hit the Platypus!')
+    pygame.display.set_caption('Jumping Lad')
     screen.fill((40, 155, 225))
     pygame.display.flip()
     run = True
