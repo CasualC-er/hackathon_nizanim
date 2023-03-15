@@ -1,9 +1,8 @@
 import pygame
-
+from global_variables import *
 
 if __name__ == '__main__':
     pygame.init()
-    screen = pygame.display.set_mode((1000, 500))
     pygame.display.set_caption('Jumping Lad')
     screen.fill((40, 155, 225))
     pygame.display.flip()

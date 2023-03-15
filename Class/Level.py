@@ -12,3 +12,6 @@ class Level:
                     pos = (tile * 16, layer * 16)
                     dic[pos] = self.field[layer][tile]
         return dic
+
+    def create_field(self):
+
