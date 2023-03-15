@@ -1,6 +1,6 @@
 import pygame
 from constants import *
-
+from global_variables import *
 
 class Level:
 
@@ -18,11 +18,12 @@ class Level:
                     dic[pos] = self.field[layer][tile]
         return dic
 
-    def create_field(self, screen):
+    def draw_field(self, screen):
         for key in self.field_dictionary:
             x = key[0]
             y = key[1]
 
             if self.field_dictionary[key] == FLOOR:
-                square = pygame.Rect(x, y, BLOCK_SIZE, BLOCK_SIZE)
-                pygame.draw.rect(screen, (90, 50, 10), square)
+                img = pygame.image.load("images/flor.jpg")
+                img = pygame.transform.scale(img, (BLOCK_SIZE, BLOCK_SIZE))
+                screen.blit(img, (x + block_offset, y))
