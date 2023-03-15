@@ -8,7 +8,6 @@ if __name__ == '__main__':
     pygame.display.set_caption('Jumping Lad')
     screen.fill((40, 155, 225))
 
-
     run = True
     while run:
         for event in pygame.event.get():
