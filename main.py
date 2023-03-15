@@ -13,7 +13,11 @@ if __name__ == '__main__':
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    block_offset += 1
+                elif event.key == pygame.K_RIGHT:
+                    block_offset -= 1
         test_level.draw_level(screen)
         pygame.display.flip()
 
