@@ -14,13 +14,15 @@ class Player:
         self.touching_goal = False
         self.speed = speed
         self.sprites = sprites
-        self.hit_box: pygame.rect.Rect = pygame.rect.Rect(0, 0, consts.PLAYER_BOX_WIDTH, consts.PLAYER_BOX_HEIGHT)
+        # both are grid (size: 1 unit by 1 unit, pos: 0, 0 on the grid)
+        self.hit_box: tuple[int, int] = (1, 1)
+        self.position: tuple[int, int] = (0, 0)
 
     def move(self, direction: int):
         if direction == 1:
-            global_variables.offset += self.speed
+            global_variables.block_offset += self.speed
         elif direction == -1:
-            global_variables.offset -= self.speed
+            global_variables.block_offset -= self.speed
         else:
             raise RuntimeError("Invalid direction")
 
@@ -36,7 +38,12 @@ class Player:
                 self.jumping = False
                 self.jumpCount = 10
 
-    def check_collisions(self):
+    def check_collisions(self, field: dict):
+        if self.position in field:
+            if isinstance(field[self.position], int):
+                self.die()
+
+    def die(self):
         pass
 
 
