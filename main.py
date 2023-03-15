@@ -6,6 +6,7 @@ if __name__ == '__main__':
     pygame.init()
     pygame.display.set_caption('Jumping Lad')
     screen.fill((40, 155, 225))
+    test_level = Level(TEST_LEVEL, TEST_LEVEL_BACKGROUND)
 
     run = True
     while run:
