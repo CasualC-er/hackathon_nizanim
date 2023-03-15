@@ -1,5 +1,4 @@
 import pygame
-from Class.Level import Level
 from global_variables import *
 from constants import *
 
@@ -14,7 +13,7 @@ if __name__ == '__main__':
             if event.type == pygame.QUIT:
                 run = False
 
-        test_level.draw_field(screen)
+        test_level.draw_level(screen)
         pygame.display.flip()
 
 pygame.quit()
