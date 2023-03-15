@@ -4,7 +4,6 @@ class Level:
         self.field = field
         self.field_dictionary = self.create_dic()
 
-
     def create_dic(self):
         dic = {}
         for layer in range(len(self.field)):
@@ -13,4 +12,3 @@ class Level:
                     pos = (tile * 16, layer * 16)
                     dic[pos] = self.field[layer][tile]
         return dic
-
