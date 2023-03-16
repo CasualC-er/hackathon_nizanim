@@ -10,7 +10,7 @@ class Level:
         self.field_dictionary = self.create_dic(field)
         self.background_dictionary = self.create_dic(background)
 
-    def create_dic(self, matrix):
+    def create_dic(self, matrix: list):
         dic = {}
         for layer in range(len(self.field)):
             for tile in range(len(self.field[layer])):
@@ -24,7 +24,7 @@ class Level:
         self.draw_background(surface)
         self.draw_field(surface)
 
-    def draw_field(self, surface):
+    def draw_field(self, surface: pygame.surface):
         for key in self.field_dictionary:
             x = key[0]
             y = key[1]
@@ -36,7 +36,7 @@ class Level:
                 img = pygame.transform.scale(img, (BLOCK_SIZE, BLOCK_SIZE))
                 surface.blit(img, (x + global_variables.block_offset[0], y))
 
-    def draw_background(self, surface):
+    def draw_background(self, surface: pygame.surface):
         for key in self.background_dictionary:
             x = key[0]
             y = key[1]
