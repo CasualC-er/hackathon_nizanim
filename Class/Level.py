@@ -34,7 +34,7 @@ class Level:
                 if char == FLOOR:
                     img = pygame.image.load("images/flor.jpg")
                 img = pygame.transform.scale(img, (BLOCK_SIZE, BLOCK_SIZE))
-                surface.blit(img, (x + global_variables.block_offset, y))
+                surface.blit(img, (x + global_variables.block_offset[0], y))
 
     def draw_background(self, surface):
         for key in self.background_dictionary:
