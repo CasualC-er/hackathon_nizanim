@@ -10,6 +10,7 @@ if __name__ == '__main__':
     moves = False
     direct = 1
     run = True
+
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -32,7 +33,7 @@ if __name__ == '__main__':
                     p.is_grounded = False
         if moves:
             block_offset[0] += PLAYER_SPEED*direct
-        screen.fill((40, 155, 225))
+        screen.fill(SCREEN_COLOR)
         test_level.draw_level(screen)
         pygame.display.flip()
 
