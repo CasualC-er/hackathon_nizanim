@@ -33,6 +33,8 @@ class Level:
             if char != ' ':
                 if char == BRICK_FLOOR:
                     img = pygame.image.load("images/flor.jpg")
+                elif char == GRASS_FLOOR:
+                    img = pygame.image.load("texture/Tiles/grassMid.png")
                 img = pygame.transform.scale(img, (BLOCK_SIZE, BLOCK_SIZE))
                 surface.blit(img, (x + global_variables.block_offset[0], y))
 
@@ -44,9 +46,10 @@ class Level:
 
             if char != ' ':
                 if char == CLOUD_1:
-                    img = pygame.image.load("images/cloud_1.png")
+                    img = pygame.image.load("texture/background/background_cloudA.png")
+                    img = pygame.transform.scale(img, (BLOCK_SIZE * 2, BLOCK_SIZE))
                 elif char == CLOUD_2:
-                    img = pygame.image.load("images/cloud_2.png")
+                    img = pygame.image.load("texture/background/background_cloudB.png")
+                    img = pygame.transform.scale(img, (BLOCK_SIZE * 2, BLOCK_SIZE))
 
-                img = pygame.transform.scale(img, (BLOCK_SIZE, BLOCK_SIZE))
                 surface.blit(img, (x, y))
