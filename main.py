@@ -26,7 +26,8 @@ if __name__ == '__main__':
                     moves = True
                     direct = -1
                 if event.key == pygame.K_SPACE:
-                    p.is_grounded = False
+                    if p.is_grounded:
+                        p.is_jumping = True
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT:
                     moves = False
@@ -40,9 +41,9 @@ if __name__ == '__main__':
                 added_y += 1/added_y
                 p.y -= added_y
             else:
-                jumping = False
-        if not p.is_jumping and not p.is_grounded:
-            pass
+                p.is_jumping = False
+                starting_y = p.y
+                added_y = 1
         if moves:
             block_offset[0] += PLAYER_SPEED*direct
         screen.fill((40, 155, 225))
