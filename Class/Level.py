@@ -31,7 +31,7 @@ class Level:
             char = self.field_dictionary[key]
 
             if char != ' ':
-                if char == FLOOR:
+                if char == BRICK_FLOOR:
                     img = pygame.image.load("images/flor.jpg")
                 img = pygame.transform.scale(img, (BLOCK_SIZE, BLOCK_SIZE))
                 surface.blit(img, (x + global_variables.block_offset[0], y))
