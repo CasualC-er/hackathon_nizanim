@@ -43,6 +43,7 @@ class Level:
                 img = pygame.transform.scale(img, (BLOCK_SIZE, BLOCK_SIZE))
                 surface.blit(img, (x + global_variables.block_offset[0], y))
 
+
     def draw_background(self, surface: pygame.surface):
         for tile in self.background_list:
             x = tile[0][0]
