@@ -32,6 +32,9 @@ class Level:
             char = tile[1]
 
             if char != ' ':
+                if char in FLOOR:
+                    square = pygame.Rect(x + global_variables.block_offset[0], y, BLOCK_SIZE, BLOCK_SIZE)
+                    pygame.draw.rect(global_variables.screen, (0, 0, 0), square)
                 if char == BRICK_FLOOR:
                     img = pygame.image.load("images/flor.jpg")
                 elif char == GRASS_FLOOR:
