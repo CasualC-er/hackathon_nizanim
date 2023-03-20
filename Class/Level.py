@@ -7,8 +7,8 @@ class Level:
 
     def __init__(self, field: list, background: list):
         self.field = field
-        self.field_list_dictionary = self.create_lis(field)
-        self.field_list_dictionary = self.create_pixel_lis()
+        self.field_grid_list = self.create_lis(field)
+        self.field_pixel_list = self.create_pixel_lis()
         self.background_list = self.create_lis(background)
 
     def create_lis(self, matrix: list):
@@ -26,10 +26,10 @@ class Level:
         self.draw_field(surface)
 
     def draw_field(self, surface: pygame.surface):
-        for tile in self.field_list_dictionary:
+        for tile in self.field_grid_list:
             x = tile[0][0]
             y = tile[0][1]
-            char = self.field_list_dictionary[1]
+            char = tile[1]
 
             if char != ' ':
                 if char == BRICK_FLOOR:
@@ -43,12 +43,11 @@ class Level:
                 img = pygame.transform.scale(img, (BLOCK_SIZE, BLOCK_SIZE))
                 surface.blit(img, (x + global_variables.block_offset[0], y))
 
-
     def draw_background(self, surface: pygame.surface):
         for tile in self.background_list:
             x = tile[0][0]
             y = tile[0][1]
-            char = self.field_list_dictionary[1]
+            char = tile[1]
 
             if char != ' ':
                 if char == CLOUD_1:
@@ -61,13 +60,12 @@ class Level:
                 surface.blit(img, (x, y))
 
     def create_pixel_lis(self):
-        grid_lis = self.field_list_dictionary
         lis = []
-        for tile in self.field_list_dictionary:
+        for tile in self.field_grid_list:
             char = tile[1]
-            lis.append([grid_lis[0], char])
+            lis.append(tile)
             for i in range(BLOCK_SIZE):
-                pos = (grid_lis[0][0] + i, grid_lis[0][1])
+                pos = (tile[0][0] + i, tile[0][1])
                 lis.append([pos, char])
 
         return lis
