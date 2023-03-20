@@ -6,7 +6,7 @@ from Class.Player import Player
 if __name__ == '__main__':
     pygame.init()
     pygame.display.set_caption('Jumping Lad')
-    p = Player(1, [])
+    p = Player([])
     moves = False
     direct = 1
     run = True
@@ -34,6 +34,7 @@ if __name__ == '__main__':
                     moves = False
                 if event.key == pygame.K_SPACE:
                     p.is_jumping = False
+
         if p.is_jumping:
             if starting_y - p.y <= BLOCK_SIZE*3:
                 added_y += 1/added_y
