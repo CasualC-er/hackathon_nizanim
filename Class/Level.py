@@ -10,6 +10,7 @@ class Level:
         self.field_grid_list = self.create_lis(field)
         self.field_pixel_list = self.create_pixel_lis()
         self.background_list = self.create_lis(background)
+        self.collider_list = []
 
     def create_lis(self, matrix: list):
         lis = []
@@ -34,6 +35,7 @@ class Level:
             if char != ' ':
                 if char in FLOOR:
                     square = pygame.Rect(x + global_variables.block_offset[0], y, BLOCK_SIZE, BLOCK_SIZE)
+                    self.collider_list.append(square)
                     pygame.draw.rect(global_variables.screen, (0, 0, 0), square)
                 if char == BRICK_FLOOR:
                     img = pygame.image.load("images/flor.jpg")
