@@ -6,7 +6,7 @@ SCREEN_COLOR = (40, 155, 225)
 PLAYER_BOX_WIDTH = 20
 PLAYER_BOX_HEIGHT = 40
 PLAYER_SPEED = 5
-PLAYER_START_Y = SCREEN_HEIGHT - BLOCK_SIZE - PLAYER_BOX_HEIGHT
+PLAYER_START_Y = SCREEN_HEIGHT - BLOCK_SIZE - PLAYER_BOX_HEIGHT - 1
 PLAYER_X = SCREEN_WIDTH//3
 
 BRICK_FLOOR = 'F'
@@ -28,7 +28,7 @@ TEST_LEVEL = [
     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'F', ' '],
     [' ', ' ', ' ', ' ', ' ', 'F', 'F', 'F', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'F', 'F', 'F', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-    ['G', 'G', 'G', 'LT', 'LT', 'G', 'G', 'G', 'G', 'G', 'G', 'LT', 'LT', 'G', 'G', ' ', 'LT', ' ', ' ', ' ', ' ', 'G', '']
+    ['G', 'G', 'G', 'LT', 'LT', 'G', 'G', 'G', 'G', 'G', 'G', 'LT', 'LT', 'G', 'G', ' ', 'LT', ' ', ' ', ' ', ' ', 'G']
 ]
 
 TEST_LEVEL_BACKGROUND = [
