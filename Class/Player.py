@@ -4,7 +4,6 @@ import global_variables
 import constants as consts
 
 
-
 class Player:
     def __init__(self,
                  sprites: list):

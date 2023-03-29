@@ -7,42 +7,52 @@ class Level:
 
     def __init__(self, field: list, background: list):
         self.field = field
-        self.field_dictionary = self.create_dic(field)
-        self.background_dictionary = self.create_dic(background)
+        self.field_grid_list = self.create_lis(field)
+        self.field_pixel_list = self.create_pixel_lis()
+        self.background_list = self.create_lis(background)
+        self.collider_list = []
 
-    def create_dic(self, matrix: list):
-        dic = {}
+    def create_lis(self, matrix: list):
+        lis = []
         for layer in range(len(self.field)):
             for tile in range(len(self.field[layer])):
                 tile_char = matrix[layer][tile]
                 if tile_char != ' ':
                     pos = (tile * BLOCK_SIZE, layer * BLOCK_SIZE)
-                    dic[pos] = matrix[layer][tile]
-        return dic
+                    lis.append([pos, matrix[layer][tile]])
+        return lis
 
-    def draw_level(self, surface):
+    def draw_level(self, surface: pygame.surface):
         self.draw_background(surface)
         self.draw_field(surface)
 
     def draw_field(self, surface: pygame.surface):
-        for key in self.field_dictionary:
-            x = key[0]
-            y = key[1]
-            char = self.field_dictionary[key]
+        self.collider_list = []
+        for tile in self.field_grid_list:
+            x = tile[0][0]
+            y = tile[0][1]
+            char = tile[1]
 
             if char != ' ':
+                if char in FLOOR:
+                    square = pygame.Rect(x + global_variables.block_offset[0], y, BLOCK_SIZE, BLOCK_SIZE)
+                    self.collider_list.append(square)
                 if char == BRICK_FLOOR:
                     img = pygame.image.load("images/flor.jpg")
                 elif char == GRASS_FLOOR:
                     img = pygame.image.load("texture/Tiles/grassMid.png")
+                elif char == WATER_TOP:
+                    img = pygame.image.load("texture/Tiles/liquidWaterTop.png")
+                elif char == LAVA_TOP:
+                    img = pygame.image.load("texture/Tiles/liquidLavaTop.png")
                 img = pygame.transform.scale(img, (BLOCK_SIZE, BLOCK_SIZE))
                 surface.blit(img, (x + global_variables.block_offset[0], y))
 
     def draw_background(self, surface: pygame.surface):
-        for key in self.background_dictionary:
-            x = key[0]
-            y = key[1]
-            char = self.background_dictionary[key]
+        for tile in self.background_list:
+            x = tile[0][0]
+            y = tile[0][1]
+            char = tile[1]
 
             if char != ' ':
                 if char == CLOUD_1:
@@ -53,3 +63,14 @@ class Level:
                     img = pygame.transform.scale(img, (BLOCK_SIZE * 2, BLOCK_SIZE))
 
                 surface.blit(img, (x, y))
+
+    def create_pixel_lis(self):
+        lis = []
+        for tile in self.field_grid_list:
+            char = tile[1]
+            lis.append(tile)
+            for i in range(BLOCK_SIZE):
+                pos = (tile[0][0] + i, tile[0][1])
+                lis.append([pos, char])
+
+        return lis
