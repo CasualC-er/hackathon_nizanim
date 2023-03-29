@@ -1,4 +1,5 @@
-from main import *
+import pygame
+# from main import *
 from constants import *
 
 
@@ -17,18 +18,31 @@ def mouse_in_button(button, mouse_pos):
         return True
 
 
-def start_screen():
-    start_screen = start_screen_maker(SCREEN_COLOR)
-    pygame.init()
-    running = True
-    screen.fill(SCREEN_COLOR)
+def villain_pos(current_level):
+    pos = [0, 0]
+    for row in range(ROW):
+        for col in range(COL):
+            if current_level[row][col] == 'V':
+                pos = [row, col]
+                return pos
+            else:
+                pass
 
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-                continue
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                x, y = pygame.mouse.get_pos()
-                mouse_pos = x, y
-                print(f"{x=}, {y=}")
+
+def villain_movement(current_level):
+    while True:
+        pos = villain_pos(current_level)
+
+        for i in range(5):
+            current_level[pos[0]][pos[1]] = ' '
+            if pos[1]+1 < COL and current_level[pos[0]][pos[1]] == ' ':
+                current_level[pos[0]][pos[1]+1] = 'V'
+            else:
+                break
+
+        for j in range(10):
+            current_level[pos[0]][pos[1]] = ' '
+            if pos[1] - 1 < COL and current_level[pos[0]][pos[1]] == ' ':
+                current_level[pos[0]][pos[1] - 1] = 'V'
+            else:
+                break

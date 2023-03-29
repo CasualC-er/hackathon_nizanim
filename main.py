@@ -2,6 +2,8 @@ import pygame
 from global_variables import *
 from constants import *
 from Class.Player import Player
+from functions import villain_movement
+
 
 
 def player_rect_by_position_collides_with(pos: tuple[int, int], level: Level):
@@ -18,8 +20,8 @@ if __name__ == '__main__':
     added_y = 1
     current_level = test_level
     starting_y = p.y
-    while run:
 
+    while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -30,7 +32,7 @@ if __name__ == '__main__':
                 if event.key == pygame.K_RIGHT:
                     moves = True
                     direct = 1
-                if event.key == pygame.K_SPACE:
+                if event.key == pygame.K_SPACE or event.key == pygame.K_UP:
                     if player_rect_by_position_collides_with((PLAYER_X, p.y + 2), current_level):
                         p.is_jumping = True
             if event.type == pygame.KEYUP:
@@ -38,7 +40,7 @@ if __name__ == '__main__':
                     moves = False
                 elif event.key == pygame.K_RIGHT:
                     moves = False
-                if event.key == pygame.K_SPACE:
+                if event.key == pygame.K_SPACE or event.key == pygame.K_UP:
                     p.is_jumping = False
 
         if p.is_jumping:
@@ -62,7 +64,7 @@ if __name__ == '__main__':
             if not player_rect_by_position_collides_with((PLAYER_X-3.01, p.y), current_level) and direct == -1:
                 block_offset[0] += PLAYER_SPEED
 
-        screen.fill((40, 155, 225))
+        screen.fill(SCREEN_COLOR)
         current_level.draw_level(screen)
         p.draw(screen)
         pygame.display.flip()
