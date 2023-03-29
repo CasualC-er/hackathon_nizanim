@@ -27,6 +27,7 @@ class Level:
         self.draw_field(surface)
 
     def draw_field(self, surface: pygame.surface):
+        self.collider_list = []
         for tile in self.field_grid_list:
             x = tile[0][0]
             y = tile[0][1]
@@ -36,7 +37,6 @@ class Level:
                 if char in FLOOR:
                     square = pygame.Rect(x + global_variables.block_offset[0], y, BLOCK_SIZE, BLOCK_SIZE)
                     self.collider_list.append(square)
-                    pygame.draw.rect(global_variables.screen, (0, 0, 0), square)
                 if char == BRICK_FLOOR:
                     img = pygame.image.load("images/flor.jpg")
                 elif char == GRASS_FLOOR:
