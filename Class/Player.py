@@ -1,4 +1,5 @@
 import pygame
+import datetime
 
 import global_variables
 import constants as consts
@@ -25,6 +26,9 @@ class Player:
     def finish(self):
         return
 
-    def draw(self, screen: pygame.Surface):
-        rec = pygame.Rect(consts.PLAYER_X, self.y, consts.PLAYER_BOX_WIDTH, consts.PLAYER_BOX_HEIGHT)
+    def draw(self, screen: pygame.Surface, texture = 0):
+        texture *= 2
+        #rec = pygame.Rect(consts.PLAYER_X, self.y, consts.PLAYER_BOX_WIDTH, consts.PLAYER_BOX_HEIGHT)
+        x = texture + (datetime.time.second%2)
+        rec = pygame.image.load("texture/Characters/character_000{x}.png")
         pygame.draw.rect(screen, (0, 0, 0), rec)
