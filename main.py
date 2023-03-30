@@ -48,10 +48,10 @@ if starte_screen():
                         p.is_jumping = False
 
             if p.is_jumping:
-                if (starting_y - p.y <= BLOCK_SIZE * 1
+                if (starting_y - p.y <= BLOCK_SIZE * 3
                     and not player_rect_by_position_collides_with((PLAYER_X, p.y - added_y),
                                                                   levels[current_level])) and p.y - added_y > 0:
-                    added_y += 5 / added_y
+                    added_y += 0.1 / added_y
                     p.y -= added_y
                 else:
                     p.is_jumping = False
@@ -64,9 +64,9 @@ if starte_screen():
                 p.y += 1
 
             if moves:
-                if not player_rect_by_position_collides_with((PLAYER_X + 3, p.y), levels[current_level]) and direct == 1:
+                if not player_rect_by_position_collides_with((PLAYER_X + 1, p.y), levels[current_level]) and direct == 1:
                     block_offset[0] -= PLAYER_SPEED
-                if not player_rect_by_position_collides_with((PLAYER_X - 8.01, p.y),
+                if not player_rect_by_position_collides_with((PLAYER_X - 3.01, p.y),
                                                              levels[current_level]) and direct == -1:
                     block_offset[0] += PLAYER_SPEED
 
