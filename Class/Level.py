@@ -7,10 +7,10 @@ class Level:
 
     def __init__(self, field: list, background: list):
         self.field = field
-        self.finish_line_rect = []
         self.field_grid_list = self.create_lis(field)
         self.field_pixel_list = self.create_pixel_lis()
         self.background_list = self.create_lis(background)
+        self.finish_line_rect = self.create_finish_rec()
         self.collider_list = list()
 
     def create_lis(self, matrix: list):
@@ -22,6 +22,13 @@ class Level:
                     pos = (tile * BLOCK_SIZE, layer * BLOCK_SIZE)
                     lis.append([pos, matrix[layer][tile]])
         return lis
+
+    def create_finish_rec(self):
+        for layer in range(len(self.field)):
+            for tile in range(len(self.field[layer])):
+                tile_char = self.field[layer][tile]
+                if tile_char == 'FL':
+                    return pygame.Rect(tile * BLOCK_SIZE, layer * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE)
 
     def draw_level(self, surface: pygame.surface):
         self.draw_background(surface)
@@ -46,7 +53,6 @@ class Level:
                     img = pygame.image.load("texture/Tiles/tile_0033.png")
                 elif char == FINISH_LINE:
                     img = pygame.image.load("texture/Tiles/tile_0088.png")
-                    self.finish_line_rect.append(pygame.Rect(x + global_variables.block_offset[0], y, BLOCK_SIZE, BLOCK_SIZE))
                 img = pygame.transform.scale(img, (BLOCK_SIZE, BLOCK_SIZE))
                 surface.blit(img, (x + global_variables.block_offset[0], y))
 
