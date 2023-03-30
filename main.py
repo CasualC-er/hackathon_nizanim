@@ -4,7 +4,7 @@ from constants import *
 from Class.Player import Player
 from functions import *
 from functions import villain_movement
-from starte_and_end_screen import starte_screen
+from starte_and_end_screen import end_screen, starte_screen
 
 
 if starte_screen():
@@ -69,7 +69,8 @@ if starte_screen():
                                                              levels[current_level]) and direct == -1:
                     block_offset[0] += PLAYER_SPEED
 
-    #
+            if p.y >= SCREEN_HEIGHT+BLOCK_SIZE:
+                end_screen()
 
             screen.fill(SCREEN_COLOR)
             levels[current_level].draw_level(screen)
