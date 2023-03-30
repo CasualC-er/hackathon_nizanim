@@ -54,7 +54,6 @@ def end_screen():
                     finish = True
                     print("o 1")
 
-
         pygame.display.flip()
     print("2")
     return val

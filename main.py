@@ -77,7 +77,6 @@ if starte_screen():
                     block_offset[0] = 0
                     p.draw(screen)
 
-
             screen.fill(SCREEN_COLOR)
             levels[current_level].draw_level(screen)
             p.draw(screen)
