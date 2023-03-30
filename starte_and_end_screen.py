@@ -34,9 +34,8 @@ def end_screen():
     screen = pygame.display.set_mode(screen_size)
     pygame.display.set_caption('Jumping Lad')
     finish = False
-
+    val = True
     while not finish:
-
         font = pygame.font.SysFont('Ariel', 60)
         welcome_text = font.render('YOU ARE DEAD !! HAHAHAHA', True, TEXT_COLOR)
         screen.blit(welcome_text, [20, 20])
@@ -46,10 +45,16 @@ def end_screen():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 finish = True
+                val = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
                 print(pos)
                 if 20 < pos[0] < 270 and 60 < pos[1] < 100:
-                    return True
+                    val = True
+                    finish = True
+                    print("o 1")
+
 
         pygame.display.flip()
+    print("2")
+    return val

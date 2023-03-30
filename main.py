@@ -7,6 +7,7 @@ from functions import villain_movement
 from starte_and_end_screen import end_screen, starte_screen
 
 
+
 if starte_screen():
     if __name__ == '__main__':
         pygame.init()
@@ -70,7 +71,12 @@ if starte_screen():
                     block_offset[0] += PLAYER_SPEED
 
             if p.y >= SCREEN_HEIGHT+BLOCK_SIZE:
-                end_screen()
+                run = end_screen()
+                if run:
+                    p.y = starting_y
+                    block_offset[0] = 0
+                    p.draw(screen)
+
 
             screen.fill(SCREEN_COLOR)
             levels[current_level].draw_level(screen)
