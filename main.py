@@ -14,7 +14,6 @@ if starte_screen():
         pygame.mixer.music.load('sound/soundtrack0.wav')
         pygame.mixer.music.play(-1)
         p = Player([])
-        pygame.display.set_caption("Jumping lad")
 
         moves = False
         run = True
@@ -50,7 +49,7 @@ if starte_screen():
                 if (starting_y - p.y <= BLOCK_SIZE * 3
                     and not player_rect_by_position_collides_with((PLAYER_X, p.y - added_y),
                                                                   levels[current_level])) and p.y - added_y > 0:
-                    added_y += 0.1 / added_y
+                    added_y += 1 / added_y
                     p.y -= added_y
                 else:
                     p.is_jumping = False
@@ -75,9 +74,8 @@ if starte_screen():
                     p.y = starting_y
                     block_offset[0] = 0
                     p.draw(screen)
-
-            if pygame.Rect(PLAYER_X, p.y, PLAYER_BOX_WIDTH, PLAYER_BOX_HEIGHT).colliderect(
-                    levels[current_level].finish_line_rect):
+            player_rect = pygame.Rect(PLAYER_X - block_offset[0], p.y, PLAYER_BOX_WIDTH, PLAYER_BOX_HEIGHT)
+            if player_rect.colliderect(levels[current_level].finish_line_rect):
                 p.finish()
                 print(9)
                 current_level += 1
