@@ -48,7 +48,7 @@ def starte_screen():
                 if 720 < pos[0] < 830 and 120 < pos[1] < 270:
                     return 0
                 if 530 < pos[0] < 650 and 300 < pos[1] < 460:
-                    return 5
+                    return 6
                 if 710 < pos[0] < 800 and 850 < pos[1] < 460:
                     return 2
         pygame.display.flip()

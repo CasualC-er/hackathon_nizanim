@@ -32,6 +32,6 @@ class Player:
         texture *= 2
         # rec = pygame.Rect(consts.PLAYER_X, self.y, consts.PLAYER_BOX_WIDTH, consts.PLAYER_BOX_HEIGHT)
         x = texture + (int(t.second) % 2)
-        rec = pygame.image.load(f"texture/Characters/character_000{x}.png")
+        rec = pygame.image.load(f"texture/Characters/character_000{texture}.png")
         img = pygame.transform.scale(rec, (consts.PLAYER_BOX_WIDTH, consts.PLAYER_BOX_HEIGHT))
         screen.blit(img, (consts.PLAYER_X, self.y))
