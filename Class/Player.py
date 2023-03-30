@@ -24,7 +24,8 @@ class Player:
         pass
 
     def finish(self):
-        return
+        self.y = consts.PLAYER_START_Y
+        global_variables.block_offset[0] = 0
 
     def draw(self, screen: pygame.Surface, texture=0):
         t = datetime.datetime.now().time()
