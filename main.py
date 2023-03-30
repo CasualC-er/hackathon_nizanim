@@ -5,7 +5,6 @@ from Class.Player import Player
 from functions import villain_movement
 
 
-
 def player_rect_by_position_collides_with(pos: tuple[int, int], level: Level):
     return pygame.rect.Rect(pos[0], pos[1], PLAYER_BOX_WIDTH, PLAYER_BOX_HEIGHT).collidelist(level.collider_list) != -1
 
@@ -13,6 +12,9 @@ def player_rect_by_position_collides_with(pos: tuple[int, int], level: Level):
 if __name__ == '__main__':
     pygame.init()
     pygame.display.set_caption('Jumping Lad')
+    pygame.mixer.init()
+    pygame.mixer.music.load('sound/soundtrack0.wav')
+    pygame.mixer.music.play(-1)
     p = Player([])
     moves = False
     direct = 0
