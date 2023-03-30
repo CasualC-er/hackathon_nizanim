@@ -6,8 +6,6 @@ from functions import *
 from functions import villain_movement
 from starte_and_end_screen import end_screen, starte_screen
 
-
-
 if starte_screen():
     if __name__ == '__main__':
         pygame.init()
@@ -16,6 +14,7 @@ if starte_screen():
         pygame.mixer.music.load('sound/soundtrack0.wav')
         pygame.mixer.music.play(-1)
         p = Player([])
+        pygame.display.set_caption("Jumping lad")
 
         moves = False
         run = True
@@ -58,24 +57,30 @@ if starte_screen():
                     starting_y = p.y
                     added_y = 1
 
-            if not player_rect_by_position_collides_with((PLAYER_X, p.y + 5), levels[current_level]) and not p.is_jumping:
-                p.y += 5
-            if not player_rect_by_position_collides_with((PLAYER_X, p.y + 1), levels[current_level]) and not p.is_jumping:
+            if not player_rect_by_position_collides_with((PLAYER_X, p.y + 1),
+                                                         levels[current_level]) and not p.is_jumping:
                 p.y += 1
 
             if moves:
-                if not player_rect_by_position_collides_with((PLAYER_X + 1, p.y), levels[current_level]) and direct == 1:
+                if not player_rect_by_position_collides_with((PLAYER_X + 1, p.y),
+                                                             levels[current_level]) and direct == 1:
                     block_offset[0] -= PLAYER_SPEED
                 if not player_rect_by_position_collides_with((PLAYER_X - 3.01, p.y),
                                                              levels[current_level]) and direct == -1:
                     block_offset[0] += PLAYER_SPEED
 
-            if p.y >= SCREEN_HEIGHT+BLOCK_SIZE:
+            if p.y >= SCREEN_HEIGHT + BLOCK_SIZE:
                 run = end_screen()
                 if run:
                     p.y = starting_y
                     block_offset[0] = 0
                     p.draw(screen)
+
+            if pygame.Rect(PLAYER_X, p.y, PLAYER_BOX_WIDTH, PLAYER_BOX_HEIGHT).colliderect(
+                    levels[current_level].finish_line_rect):
+                p.finish()
+                print(9)
+                current_level += 1
 
             screen.fill(SCREEN_COLOR)
             levels[current_level].draw_level(screen)
