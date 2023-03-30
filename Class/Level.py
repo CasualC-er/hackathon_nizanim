@@ -17,7 +17,7 @@ class Level:
         for layer in range(len(self.field)):
             for tile in range(len(self.field[layer])):
                 tile_char = matrix[layer][tile]
-                if tile_char != ' ':
+                if tile_char != ' ' and tile_char != '':
                     pos = (tile * BLOCK_SIZE, layer * BLOCK_SIZE)
                     lis.append([pos, matrix[layer][tile]])
         return lis

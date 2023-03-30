@@ -1,6 +1,11 @@
 import pygame
 # from main import *
 from constants import *
+from Class.Level import Level
+
+
+def player_rect_by_position_collides_with(pos: tuple[int, int], level: Level):
+    return pygame.rect.Rect(pos[0], pos[1], PLAYER_BOX_WIDTH, PLAYER_BOX_HEIGHT).collidelist(level.collider_list) != -1
 
 
 def start_screen_maker(color):
@@ -35,8 +40,8 @@ def villain_movement(current_level):
 
         for i in range(5):
             current_level[pos[0]][pos[1]] = ' '
-            if pos[1]+1 < COL and current_level[pos[0]][pos[1]] == ' ':
-                current_level[pos[0]][pos[1]+1] = 'V'
+            if pos[1] + 1 < COL and current_level[pos[0]][pos[1]] == ' ':
+                current_level[pos[0]][pos[1] + 1] = 'V'
             else:
                 break
 
