@@ -39,7 +39,7 @@ class Level:
                     tile = pygame.Rect(x + global_variables.block_offset[0], y, BLOCK_SIZE, BLOCK_SIZE)
                     self.collider_list.append(tile)
                 if char == BRICK_FLOOR:
-                    img = pygame.image.load("images/flor.jpg")
+                    img = pygame.image.load("texture/Tiles/tile_0047.png")
                 elif char == GRASS_FLOOR:
                     img = pygame.image.load("texture/Tiles/tile_0002.png")
                 elif char == WATER_TOP:
