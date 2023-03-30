@@ -6,7 +6,7 @@ from functions import *
 from functions import villain_movement
 from starte_and_end_screen import end_screen, starte_screen
 
-
+x = starte_screen()
 
 if starte_screen():
     if __name__ == '__main__':
@@ -15,6 +15,7 @@ if starte_screen():
         pygame.mixer.init()
         pygame.mixer.music.load('sound/soundtrack0.wav')
         pygame.mixer.music.play(-1)
+
         p = Player([])
 
         moves = False
@@ -58,8 +59,6 @@ if starte_screen():
                     starting_y = p.y
                     added_y = 1
 
-            if not player_rect_by_position_collides_with((PLAYER_X, p.y + 5), levels[current_level]) and not p.is_jumping:
-                p.y += 5
             if not player_rect_by_position_collides_with((PLAYER_X, p.y + 1), levels[current_level]) and not p.is_jumping:
                 p.y += 1
 
@@ -75,11 +74,11 @@ if starte_screen():
                 if run:
                     p.y = starting_y
                     block_offset[0] = 0
-                    p.draw(screen)
+                    p.draw(screen, x)
 
             screen.fill(SCREEN_COLOR)
             levels[current_level].draw_level(screen)
-            p.draw(screen)
+            p.draw(screen, x)
             pygame.display.flip()
 
         pygame.quit()
