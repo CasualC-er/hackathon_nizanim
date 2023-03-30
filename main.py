@@ -67,8 +67,9 @@ if __name__ == '__main__':
                                                          levels[current_level]) and direct == -1:
                 block_offset[0] += PLAYER_SPEED
 
-        if True:
-            pass
+        if pygame.rect.Rect(PLAYER_X, p.y + 1, PLAYER_BOX_WIDTH, PLAYER_BOX_HEIGHT).collidelist(levels[current_level].finish_line_rect):
+            p.finish()
+            current_level += 1
 
         screen.fill(SCREEN_COLOR)
         levels[current_level].draw_level(screen)

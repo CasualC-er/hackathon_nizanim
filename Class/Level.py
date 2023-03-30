@@ -7,6 +7,7 @@ class Level:
 
     def __init__(self, field: list, background: list):
         self.field = field
+        self.finish_line_rect = 0
         self.field_grid_list = self.create_lis(field)
         self.field_pixel_list = self.create_pixel_lis()
         self.background_list = self.create_lis(background)
@@ -35,16 +36,17 @@ class Level:
 
             if char != ' ':
                 if char in FLOOR:
-                    square = pygame.Rect(x + global_variables.block_offset[0], y, BLOCK_SIZE, BLOCK_SIZE)
-                    self.collider_list.append(square)
+                    tile = pygame.Rect(x + global_variables.block_offset[0], y, BLOCK_SIZE, BLOCK_SIZE)
+                    self.collider_list.append(tile)
                 if char == BRICK_FLOOR:
                     img = pygame.image.load("images/flor.jpg")
                 elif char == GRASS_FLOOR:
-                    img = pygame.image.load("texture/Tiles/grassMid.png")
+                    img = pygame.image.load("texture/Tiles/tile_0002.png")
                 elif char == WATER_TOP:
-                    img = pygame.image.load("texture/Tiles/liquidWaterTop.png")
-                elif char == LAVA_TOP:
-                    img = pygame.image.load("texture/Tiles/liquidLavaTop.png")
+                    img = pygame.image.load("texture/Tiles/tile_0033.png")
+                elif char == FINISH_LINE:
+                    self.finish_line_rect = tile
+                    img = pygame.image.load("texture/Tiles/signRight.png")
                 img = pygame.transform.scale(img, (BLOCK_SIZE, BLOCK_SIZE))
                 surface.blit(img, (x + global_variables.block_offset[0], y))
 

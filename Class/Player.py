@@ -23,7 +23,7 @@ class Player:
         pass
 
     def finish(self):
-        pass
+        return
 
     def draw(self, screen: pygame.Surface):
         rec = pygame.Rect(consts.PLAYER_X, self.y, consts.PLAYER_BOX_WIDTH, consts.PLAYER_BOX_HEIGHT)
