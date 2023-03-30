@@ -29,7 +29,6 @@ class Player:
 
     def draw(self, screen: pygame.Surface, texture=0):
         t = datetime.datetime.now().time()
-        texture *= 2
         # rec = pygame.Rect(consts.PLAYER_X, self.y, consts.PLAYER_BOX_WIDTH, consts.PLAYER_BOX_HEIGHT)
         x = texture + (int(t.second) % 2)
         rec = pygame.image.load(f"texture/Characters/character_000{texture}.png")

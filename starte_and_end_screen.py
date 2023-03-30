@@ -42,13 +42,13 @@ def starte_screen():
                 pos = pygame.mouse.get_pos()
                 print(pos)
                 if 20 < pos[0] < 120 and 60 < pos[1] < 90:
-                    return True
+                    return 2
                 if 520 < pos[0] < 650 and 120 < pos[1] < 270:
                     return 7
                 if 720 < pos[0] < 830 and 120 < pos[1] < 270:
                     return 0
                 if 530 < pos[0] < 650 and 300 < pos[1] < 460:
-                    return 6
+                    return 5
                 if 710 < pos[0] < 800 and 850 < pos[1] < 460:
                     return 2
         pygame.display.flip()
