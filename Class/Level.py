@@ -58,10 +58,10 @@ class Level:
 
             if char != ' ':
                 if char == CLOUD_1:
-                    img = pygame.image.load("texture/background/background_cloudA.png")
+                    img = pygame.image.load("texture/Background/background_cloudA.png")
                     img = pygame.transform.scale(img, (BLOCK_SIZE * 2, BLOCK_SIZE))
                 elif char == CLOUD_2:
-                    img = pygame.image.load("texture/background/background_cloudB.png")
+                    img = pygame.image.load("texture/Background/background_cloudB.png")
                     img = pygame.transform.scale(img, (BLOCK_SIZE * 2, BLOCK_SIZE))
 
                 surface.blit(img, (x, y))
